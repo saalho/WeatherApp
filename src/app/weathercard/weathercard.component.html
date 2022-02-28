@@ -1,0 +1,42 @@
+<div class="app-title">
+    <h1 class="app-titletext">Säätutka</h1>
+</div>
+<div class="app-body">
+    <select name="cities" class="cities border-rounded" (change)="changeFilter($event)">
+        <option value="0" >Kaikki kaupungit</option>
+        <option value="634963">Tampere</option>
+        <option value="655195">Jyväskylä</option>
+        <option value="650225">Kuopio</option>
+        <option value="660129">Espoo</option>
+    </select>
+    <div class="city-cards" *ngFor="let data of allData">
+        <div class="col-current main-card border-rounded" *ngIf="selectFilter === '0' || selectFilter === data[0].id">
+            <div class="c1-r1">
+            <h2 id="city">{{data[0].city}}</h2>
+            <p id="main-weather" class="weather-info">{{data[0].desc}}</p>
+            </div>
+            <div class="c1-r2">
+            <h3 id="date">{{data[0].date}}</h3>
+            <p id="time" class="weather-info">{{data[0].time}}</p>
+            </div>
+            <div class="c2-r1">
+            <img id="main-icon" [src]="data[0].icon"/>
+            <h2 id="main-temp">{{data[0].temp}} &deg;C</h2>
+            </div>
+            <p id="air" class="weather-info">Wind: {{data[0].wind}} m/s<br> Humidity: {{data[0].humd}} %<br> Precipitation (3 h): {{data[0].prec}} mm</p>
+        </div>
+        <div class="col-forecast card-container">
+            <div *ngFor="let fc of data[0].fcast">
+                <div *ngIf="selectFilter === '0' || selectFilter === data[0].id" class="sub-card border-rounded">
+                    <p class="weather-info" id="fc-time" >{{fc.time}}</p>
+                    <img id="fc-icon" [src]="fc.icon"/>
+                    <h3 id="fc-temp">{{fc.temp}}&deg;C</h3>
+                    <div class="fc-bottom">
+                        <p >{{fc.wind}} m/s<br>{{fc.humd}} %<br>{{fc.prec}} mm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

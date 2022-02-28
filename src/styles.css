@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+html{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+body{
+    background-color: #F8F9FA;
+    margin: 0;
+}
+
+.col-current .col-forecast{
+    width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+    [class*="col-"]{width: 47%; float: left; }
+    .col-current{margin-right:2pt;}
+    .col-forecast{margin-left: 1pt;}
+}
+
+@media only screen and (min-width: 1025px) {
+    [class*="col-"]{width: 40%; float: left; }
+    .col-current{margin-left:8%; margin-right:2pt;}
+    .col-forecast{margin-right: 8%; margin-left: 1pt;}
+}
+
+@media only screen and (min-width: 2000px) {
+    [class*="col-"]{width: 25%; float: left; }
+    .col-current{margin-left:24%; margin-right:2pt;}
+    .col-forecast{margin-right: 24%; margin-left: 1pt;}
+    .cities{
+        width: 75% !important;
+        margin-left: 12%;
+        margin-right: 12%;
+    }
+}
